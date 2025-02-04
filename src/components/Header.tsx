@@ -36,7 +36,8 @@ const StyledHeader = styled.header({
     "& .authentication-status": {
         display: "flex",
         alignItems: "center",
-        gap: 10
+        gap: 10,
+        justifyContent: "end"
     }
 })
 
