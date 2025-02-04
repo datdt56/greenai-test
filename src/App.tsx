@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const { tableData, loading, handleSearch, resetTable } = useBooks();
 
   const handlePageChange = (event: unknown, page: number) => {
-    handleSearch(undefined, page);
+    handleSearch(undefined, page, true);
   };
 
   const handleLogin = () => {
@@ -26,7 +26,7 @@ const App: React.FC = () => {
     <StyledWrapper>
       <Header
         username={username}
-        averageDuration={tableData.averageDuration}
+        averageDuration={tableData.apiCallCount ? (tableData.totalApiCallDuration / tableData.apiCallCount).toFixed(2) : '0'}
         onLogout={handleLogout}
         onLogin={handleLogin}
       />

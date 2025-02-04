@@ -33,8 +33,8 @@ const BookTable: React.FC<BookTableProps> = ({ books, meta, onPageChange, loadin
                     </tr>
                 </thead>
                 <tbody>
-                    {books.map((book, index) => (
-                        <tr key={index}>
+                    {books.map((book) => (
+                        <tr key={book.key}>
                             <td>{book.author_name?.join(', ')}</td>
                             <td>{book.title}</td>
                             <td className='text-center'>{book.edition_count}</td>

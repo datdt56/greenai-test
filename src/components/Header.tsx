@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 interface Props {
     username: string;
-    averageDuration: number;
+    averageDuration: string;
     onLogout: () => void;
     onLogin: () => void;
 }

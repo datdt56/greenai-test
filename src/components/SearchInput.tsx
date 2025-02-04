@@ -3,21 +3,21 @@ import styled from '@emotion/styled';
 import { debounce } from "lodash"
 
 interface Props {
-    onSearch: (searchText: string) => void
+    onSearch: (searchText: string, page: number, shouldSearch?: boolean) => void
 }
 
 
 const SearchInput = ({onSearch} : Props) => {
     const [text, setText] = useState("")
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const textValue = event.target.value.trim()
+        const textValue = event.target.value.trimStart()
         setText(textValue)
         debouncedInputChange(textValue)
     }
     const debouncedInputChange = useMemo(
         () =>
           debounce((inputValue) => {
-            onSearch(inputValue);
+            onSearch(inputValue, 1);
           }, 1000),
         [onSearch]
       );
@@ -30,7 +30,7 @@ const SearchInput = ({onSearch} : Props) => {
             onChange={handleInputChange}
             placeholder="Search for books..."
           />
-          <button type="button" onClick={() => onSearch(text)}>Search</button>
+          <button type="button" onClick={() => onSearch(text, 1, true)}>Search</button>
         </StyledWrapper>
     )
 }
